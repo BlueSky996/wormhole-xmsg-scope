@@ -1,0 +1,14 @@
+{
+  "lib/forge-std": {
+    "tag": {
+      "name": "v1.14.0",
+      "rev": "1801b0541f4fda118a10798fd3486bb7051c5dd6"
+    }
+  },
+  "lib/wormhole": {
+    "tag": {
+      "name": "v2.54.0",
+      "rev": "48f9bd95cc4b6281be4f4df7d75dd9e64f477397"
+    }
+  }
+}
