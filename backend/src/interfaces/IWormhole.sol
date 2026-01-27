@@ -3,7 +3,7 @@ pragma solidity ^0.8.20;
 
 interface IWormhole {
     function publishMessage(
-        uint256 nonce,
+        uint32 nonce,
         bytes memory payload,
         uint8 consistencyLevel
     ) external payable returns (uint64 sequence);

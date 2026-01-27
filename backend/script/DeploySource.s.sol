@@ -7,7 +7,7 @@ import "../src/SourceMessenger.sol";
 contract DeploySource is Script {
     function run() external {
         vm.startBroadcast();
-        new SourceMessenger(0xWORMHOLE_CORE_ADDRESS);
+        new SourceMessenger(0x4a8bc80Ed5a4067f1CCf107057b8270E0cC11A78);
         vm.stopBroadcast();
     }
 }

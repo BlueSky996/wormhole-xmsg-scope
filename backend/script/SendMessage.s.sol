@@ -8,7 +8,7 @@ import "../src/SourceMessenger.sol";
 contract sendMessage is Script {
     function run() external {
         vm.startBroadcast();
-        SourceMessenger(SOURCE_CONTRACT).sendMessage{value: 0.01 ether}(
+        SourceMessenger(0x1234567890abcdef1234567890abcdef12345678).sendMessage{value: 0.01 ether}(
             abi.encode("hello wormhole")
         );
         vm.stopBroadcast();
