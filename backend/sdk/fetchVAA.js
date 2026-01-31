@@ -1,4 +1,4 @@
-import { getSignedVAAWithRetry } from "@wormhole-foundation/wormhole-sdk";
+import { getSignedVAAWithRetry, parseVaa, } from "@wormhole-foundation/wormhole-sdk";
 
 const GUARDIAN_RPC = "https://wormhole-v2-testnet-api.certus.one";
 
@@ -19,8 +19,12 @@ async function fetchVAA() {
         SEQUENCE // from tx log
     );
 
-    const VaaHex = "0x" + ArrayBuffer.from(vaaBytes).toString("hex");
-    console.log(vaa.vaaBytes);
+    const parsed = parseVaa(vaa.vaaBytes);
+
+    console.log("Raw Payload (bytes)", parsed.payload);
+    console.log("Decoded payload (string):", ArrayBuffer.from(parsed.payload).toString());
+
+
 }
 
 fetchVAA();
