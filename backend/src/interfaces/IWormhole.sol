@@ -7,4 +7,7 @@ interface IWormhole {
         bytes memory payload,
         uint8 consistencyLevel
     ) external payable returns (uint64 sequence);
+
+    function messageFee() external view returns (uint256);
+    
 }

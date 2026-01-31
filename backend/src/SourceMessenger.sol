@@ -17,4 +17,9 @@ contract SourceMessenger {
         );
     }
 
+    function getMinimumFee() public view returns (uint256) {
+        // use messageFee variable from wormhole contract to get the minimum fee
+        return wormhole.messageFee();
+    }
+
 }

@@ -2,14 +2,24 @@ import { getSignedVAAWithRetry } from "@wormhole-foundation/wormhole-sdk";
 
 const GUARDIAN_RPC = "https://wormhole-v2-testnet-api.certus.one";
 
+// eth sepolia
+const CHAIN_ID = 2;
+
+// sourcemessenger address = 32 byte padded
+const EMITTER = 
+   "000000000000000000000000d4e095ca2381c0da7af8fdcd947962c82e919f87";
+
+const SEQUENCE = "1";
+
 async function fetchVAA() {
-    const vaa = await getSignedVAAWithRetry(
+    const { vaaBytes } = await getSignedVAAWithRetry(
         GUARDIAN_RPC,
-        2, // source chain id
-        "EMITTER_ADDR", //source contract
-        "SEQUENCE" // from tx log
+        CHAIN_ID, // source chain id
+        EMITTER, //source contract
+        SEQUENCE // from tx log
     );
 
+    const VaaHex = "0x" + ArrayBuffer.from(vaaBytes).toString("hex");
     console.log(vaa.vaaBytes);
 }
 
