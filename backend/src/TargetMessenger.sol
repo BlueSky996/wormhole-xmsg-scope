@@ -12,8 +12,15 @@ contract TargetMessenger {
         
     }
 
-    function receiveMessage(bytes memory payload) external {
-        // later: restrict caller to wormhole relayer / verfiy VAA
-        lastMessage = payload;
-    }
+    function receiveMessage(bytes calldata encodedVM) external {
+        (
+            IWormhole.VM memory vm,
+            bool valid,
+            string memory reason
+        ) = wormhole.parseAndVerifyVm(encodedVM);
+
+        require(valid, reason);
+
+        lastMessage = vm.payload;
+    } 
 }
